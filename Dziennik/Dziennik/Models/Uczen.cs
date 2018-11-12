@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Dziennik.Models
 {
-    public class Login
+    public class Uczen
     {
     }
 }
