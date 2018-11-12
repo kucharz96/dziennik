@@ -13,7 +13,7 @@ namespace Dziennik.Models
 
         public virtual ICollection<Ocena> Oceny { get; set; }
         public virtual ICollection<Uwaga> Uwagi { get; set; }
-        public virtual ICollection<Spoznienia> Spoznienia { get; set; }
+        public virtual ICollection<Spoznienie> Spoznienia { get; set; }
         public virtual ICollection<Nieobecnosc> Nieobecnosci { get; set; }
 
 
