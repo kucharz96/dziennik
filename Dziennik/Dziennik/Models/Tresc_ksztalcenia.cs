@@ -10,10 +10,10 @@ namespace Dziennik.Models
 {
     public class Tresc_ksztalcenia
     {
-        public int ID { get; set; }
+        
         [Key]
         [ForeignKey("Przedmiot")]
-        public int PrzedmiotID { get; set; }
+        public int? PrzedmiotID { get; set; }
         [NotMapped]
         public FileStream plik { get; set; }
 

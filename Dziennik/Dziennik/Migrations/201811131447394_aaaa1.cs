@@ -3,7 +3,7 @@ namespace Dziennik.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class aaaaaaaaa : DbMigration
+    public partial class aaaa1 : DbMigration
     {
         public override void Up()
         {

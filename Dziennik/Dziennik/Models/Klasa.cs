@@ -13,20 +13,21 @@ namespace Dziennik.Models
     }
     public class Klasa
     {
-
-        public int ID { get; set; }
-        public string nazwa { get; set; }
         
-        [ForeignKey("Wychowawca")]
-        public int NauczycielID { get; set; }
+        public int? KlasaID { get; set; }
+        
+        public int? NauczycielID { get; set; }
+        public string nazwa { get; set; }
+      
         public klasa? level { get; set; }
 
-        public virtual Nauczyciel Wychowawca { get; set; }
-        public virtual ICollection<Nauczyciel> Nauczyciele { get; set; }
+        public virtual Nauczyciel Nauczyciel{ get; set; }
+        public virtual ICollection<PrzedmiotKlasaNauczyciel> Link { get; set; }
         public virtual ICollection<Uczen> Uczniowie { get; set; }
-        public virtual ICollection<Przedmiot> Przedmioty { get; set; }
+        
         public virtual ICollection<Lekcja> Lekcje { get; set; }
         public virtual ICollection<Plik> Pliki{ get; set; }
         public virtual ICollection<Test> Testy { get; set; }
+
     }
 }

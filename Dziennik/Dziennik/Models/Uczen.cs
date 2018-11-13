@@ -9,8 +9,8 @@ namespace Dziennik.Models
 
     {
         public int ID { get; set; }
-        public int KlasaID { get; set; }
-        public int RodzicID { get; set; }
+        public int? KlasaID { get; set; }
+        public int? RodzicID { get; set; }
         public string imie { get; set; }
         public string nazwisko { get; set; }
         public string login { get; set; }

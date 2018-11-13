@@ -159,25 +159,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811131235409_asd.cs" />
-    <Compile Include="Migrations\201811131235409_asd.Designer.cs">
-      <DependentUpon>201811131235409_asd.cs</DependentUpon>
+    <Compile Include="Migrations\201811131441540_aaaa.cs" />
+    <Compile Include="Migrations\201811131441540_aaaa.Designer.cs">
+      <DependentUpon>201811131441540_aaaa.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811131243536_asdff.cs" />
-    <Compile Include="Migrations\201811131243536_asdff.Designer.cs">
-      <DependentUpon>201811131243536_asdff.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811131245075_sdas.cs" />
-    <Compile Include="Migrations\201811131245075_sdas.Designer.cs">
-      <DependentUpon>201811131245075_sdas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811131246194_asdsd.cs" />
-    <Compile Include="Migrations\201811131246194_asdsd.Designer.cs">
-      <DependentUpon>201811131246194_asdsd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811131252023_aaaaaaaaa.cs" />
-    <Compile Include="Migrations\201811131252023_aaaaaaaaa.Designer.cs">
-      <DependentUpon>201811131252023_aaaaaaaaa.cs</DependentUpon>
+    <Compile Include="Migrations\201811131447394_aaaa1.cs" />
+    <Compile Include="Migrations\201811131447394_aaaa1.Designer.cs">
+      <DependentUpon>201811131447394_aaaa1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Administrator.cs" />
@@ -188,6 +176,7 @@
     <Compile Include="Models\Ogloszenie.cs" />
     <Compile Include="Models\Ogloszenie_dla_rodzicow.cs" />
     <Compile Include="Models\Plik.cs" />
+    <Compile Include="Models\PrzedmiotKlasaNauczyciel.cs" />
     <Compile Include="Models\Testy_ucznia.cs" />
     <Compile Include="Models\Tresc_ksztalcenia.cs" />
     <Compile Include="Models\Lekcja.cs" />
@@ -257,20 +246,11 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201811131235409_asd.resx">
-      <DependentUpon>201811131235409_asd.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811131441540_aaaa.resx">
+      <DependentUpon>201811131441540_aaaa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811131243536_asdff.resx">
-      <DependentUpon>201811131243536_asdff.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811131245075_sdas.resx">
-      <DependentUpon>201811131245075_sdas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811131246194_asdsd.resx">
-      <DependentUpon>201811131246194_asdsd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811131252023_aaaaaaaaa.resx">
-      <DependentUpon>201811131252023_aaaaaaaaa.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811131447394_aaaa1.resx">
+      <DependentUpon>201811131447394_aaaa1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -14,12 +14,11 @@ namespace Dziennik.Models
     public class Przedmiot
 
     {
-        public int ID { get; set; }
+        public int? ID { get; set; }
         public string nazwa { get; set; }
         public kl level { get; set; }
 
-        public virtual ICollection<Klasa> Klasy { get; set; }
-        public virtual ICollection<Nauczyciel> Nauczyciele { get; set; }
+        public virtual ICollection<PrzedmiotKlasaNauczyciel> Link { get; set; }
         public virtual ICollection<Ocena> Oceny { get; set; }
         public virtual ICollection<Lekcja> Lekcje { get; set; }
         public virtual ICollection<Plik> Pliki { get; set; }

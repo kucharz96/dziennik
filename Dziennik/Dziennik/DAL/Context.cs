@@ -29,6 +29,7 @@ namespace Dziennik.DAL
         public DbSet<Tresc_ksztalcenia> Tresci_ksztalcenia { get; set; }
         public DbSet<Uczen> Uczniowie { get; set; }
         public DbSet<Uwaga> Uwagi { get; set; }
+        public DbSet<PrzedmiotKlasaNauczyciel> Links { get; set; }
 
 
 
@@ -36,6 +37,15 @@ namespace Dziennik.DAL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Entity<Klasa>()
+           .HasOptional(s => s.Nauczyciel)
+           .WithMany()
+           .HasForeignKey(s => s.NauczycielID);
+
+            modelBuilder.Entity<Nauczyciel>()
+                       .HasOptional(s => s.Klasa)
+                       .WithMany()
+                       .HasForeignKey(s => s.KlasaID);
         }
     }
 }
