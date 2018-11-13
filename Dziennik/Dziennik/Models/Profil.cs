@@ -10,5 +10,6 @@ namespace Dziennik.Models
         public List<Administrator> Administratorzy { get; set; }
         public List<Uczen> Uczniowie { get; set; }
         public List<Rodzic> Rodzice { get; set; }
+        public List<Nauczyciel> Nauczyciele { get; set; }
     }
 }
