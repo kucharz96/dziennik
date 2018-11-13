@@ -151,9 +151,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Efekt_ksztalcenia.cs" />
+    <Compile Include="Models\Administrator.cs" />
+    <Compile Include="Models\Klasa.cs" />
+    <Compile Include="Models\Nauczyciel.cs" />
+    <Compile Include="Models\Nieobecnosc.cs" />
+    <Compile Include="Models\Ocena.cs" />
+    <Compile Include="Models\Ogloszenie.cs" />
+    <Compile Include="Models\Ogloszenie_dla_rodzicow.cs" />
+    <Compile Include="Models\Plik.cs" />
+    <Compile Include="Models\Testy_ucznia.cs" />
+    <Compile Include="Models\Tresc_ksztalcenia.cs" />
     <Compile Include="Models\Lekcja.cs" />
-    <Compile Include="Models\Profil.cs" />
     <Compile Include="Models\Przedmiot.cs" />
     <Compile Include="Models\Pytanie.cs" />
     <Compile Include="Models\Rodzic.cs" />
