@@ -13,12 +13,13 @@ namespace Dziennik.Models
     }
     public class Klasa
     {
+
         public int ID { get; set; }
         public string nazwa { get; set; }
-        [Key]
+        
         [ForeignKey("Wychowawca")]
-        public int IDNauczyciel { get; set; }
-        public klasa level { get; set; }
+        public int NauczycielID { get; set; }
+        public klasa? level { get; set; }
 
         public virtual Nauczyciel Wychowawca { get; set; }
         public virtual ICollection<Nauczyciel> Nauczyciele { get; set; }

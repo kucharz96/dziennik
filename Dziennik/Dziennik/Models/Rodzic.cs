@@ -7,7 +7,7 @@ namespace Dziennik.Models
 {
     public class Rodzic
     {
-        public int ID;
+        public int ID { get; set; }
         public string imie { get; set; }
         public string nazwisko { get; set; }
         public string login { get; set; }

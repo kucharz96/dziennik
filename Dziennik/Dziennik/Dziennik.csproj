@@ -155,9 +155,27 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\Context.cs" />
+    <Compile Include="DAL\Initializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811131235409_asd.cs" />
+    <Compile Include="Migrations\201811131235409_asd.Designer.cs">
+      <DependentUpon>201811131235409_asd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811131243536_asdff.cs" />
+    <Compile Include="Migrations\201811131243536_asdff.Designer.cs">
+      <DependentUpon>201811131243536_asdff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811131245075_sdas.cs" />
+    <Compile Include="Migrations\201811131245075_sdas.Designer.cs">
+      <DependentUpon>201811131245075_sdas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811131246194_asdsd.cs" />
+    <Compile Include="Migrations\201811131246194_asdsd.Designer.cs">
+      <DependentUpon>201811131246194_asdsd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Administrator.cs" />
     <Compile Include="Models\Klasa.cs" />
     <Compile Include="Models\Nauczyciel.cs" />
@@ -233,6 +251,20 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201811131235409_asd.resx">
+      <DependentUpon>201811131235409_asd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811131243536_asdff.resx">
+      <DependentUpon>201811131243536_asdff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811131245075_sdas.resx">
+      <DependentUpon>201811131245075_sdas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811131246194_asdsd.resx">
+      <DependentUpon>201811131246194_asdsd.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
