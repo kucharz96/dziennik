@@ -20,7 +20,7 @@ namespace Dziennik.Models
         public virtual ICollection<Test> Testy { get; set; }
         public virtual ICollection<Uwaga> Uwagi { get; set; }
         public virtual ICollection<Ogloszenie> Ogloszenia { get; set; }
-        public virtual ICollection<Ogloszenie_do_rodzicow>Ogloszenia_r { get; set; }
+        public virtual ICollection<Ogloszenie_dla_rodzicow>Ogloszenia_r { get; set; }
         public virtual ICollection<Ocena> Oceny { get; set; }
         public virtual Nauczyciel Wychowawca { get; set; }
     }

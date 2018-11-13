@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Dziennik.Models
 {
-    public enum klasa
+    public enum kl
     {
         kl1, kl2, kl3
     }
@@ -14,7 +16,7 @@ namespace Dziennik.Models
     {
         public int ID { get; set; }
         public string nazwa { get; set; }
-        public klasa? level { get; set; }
+        public kl level { get; set; }
 
         public virtual ICollection<Klasa> Klasy { get; set; }
         public virtual ICollection<Nauczyciel> Nauczyciele { get; set; }

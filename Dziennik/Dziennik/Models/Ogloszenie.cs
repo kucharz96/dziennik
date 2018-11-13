@@ -11,6 +11,7 @@ namespace Dziennik.Models
         public int IDNauczyciel { get; set; }
         public string naglowek { get; set; }
         public string tresc { get; set; }
+        public DateTime data { get; set; }
 
         public virtual Nauczyciel Nauczyciel { get; set; }
 
