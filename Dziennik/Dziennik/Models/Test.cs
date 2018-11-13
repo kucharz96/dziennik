@@ -8,9 +8,9 @@ namespace Dziennik.Models
     public class Test
     {
         public int ID { get; set; }
-        public int IDPrzedmiot { get; set; }
-        public int IDKlasa { get; set; }
-        public int IDNauczyciel { get; set; }
+        public int PrzedmiotID { get; set; }
+        public int KlasaID { get; set; }
+        public int NauczycielID { get; set; }
         public DateTime czas_trwania { get; set; }
 
         public virtual Przedmiot Przedmiot { get; set; }

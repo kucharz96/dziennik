@@ -8,8 +8,8 @@ namespace Dziennik.Models
     public class Lekcja
     {
         public int ID { get; set; }
-        public int IDPrzedmiot { get; set; }
-        public int IDKlasa { get; set; }
+        public int PrzedmiotID { get; set; }
+        public int KlasaID { get; set; }
         public DateTime date { get; set; }
 
         public virtual Przedmiot Przedmiot { get; set; }

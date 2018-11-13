@@ -13,7 +13,7 @@ namespace Dziennik.Models
     public class Pytanie
     {
         public int ID { get; set; }
-        public int IDTest { get; set; }
+        public int TestID { get; set; }
         public string tresc { get; set; }
         public string odpowiedz1 { get; set; }
         public string odpowiedz2 { get; set; }

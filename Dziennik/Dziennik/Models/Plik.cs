@@ -14,9 +14,9 @@ namespace Dziennik.Models
         public FileStream plik { get; set; }
         public DateTime data { get; set; }
 
-        public int IDPrzedmiot { get; set; }
-        public int IDKlasa { get; set; }
-        public int IDNauczyciel { get; set; }
+        public int PrzedmiotID { get; set; }
+        public int KlasaID { get; set; }
+        public int NauczycielID { get; set; }
         
 
         public virtual Przedmiot Przedmiot { get; set; }

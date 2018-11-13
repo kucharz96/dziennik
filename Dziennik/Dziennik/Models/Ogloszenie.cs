@@ -8,7 +8,7 @@ namespace Dziennik.Models
     public class Ogloszenie
     {
         public int ID { get; set; }
-        public int IDNauczyciel { get; set; }
+        public int NauczycielID { get; set; }
         public string naglowek { get; set; }
         public string tresc { get; set; }
         public DateTime data { get; set; }

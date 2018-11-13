@@ -13,7 +13,7 @@ namespace Dziennik.Models
         public int ID { get; set; }
         [Key]
         [ForeignKey("Przedmiot")]
-        public int IDPrzedmiot { get; set; }
+        public int PrzedmiotID { get; set; }
         [NotMapped]
         public FileStream plik { get; set; }
 
