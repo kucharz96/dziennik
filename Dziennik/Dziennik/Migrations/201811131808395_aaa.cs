@@ -3,7 +3,7 @@ namespace Dziennik.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class aaaa : DbMigration
+    public partial class aaa : DbMigration
     {
         public override void Up()
         {
@@ -66,12 +66,12 @@ namespace Dziennik.Migrations
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
-                        KlasaID = c.Int(),
-                        RodzicID = c.Int(),
                         imie = c.String(),
                         nazwisko = c.String(),
                         login = c.String(),
                         haslo = c.String(),
+                        KlasaID = c.Int(),
+                        RodzicID = c.Int(),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Klasa", t => t.KlasaID)
@@ -105,11 +105,11 @@ namespace Dziennik.Migrations
                 c => new
                     {
                         NauczycielID = c.Int(nullable: false, identity: true),
-                        KlasaID = c.Int(),
                         imie = c.String(),
                         nazwisko = c.String(),
                         login = c.String(),
                         haslo = c.String(),
+                        KlasaID = c.Int(),
                     })
                 .PrimaryKey(t => t.NauczycielID)
                 .ForeignKey("dbo.Klasa", t => t.KlasaID)

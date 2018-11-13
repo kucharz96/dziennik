@@ -154,18 +154,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UczenController.cs" />
     <Compile Include="DAL\Context.cs" />
     <Compile Include="DAL\Initializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811131441540_aaaa.cs" />
-    <Compile Include="Migrations\201811131441540_aaaa.Designer.cs">
-      <DependentUpon>201811131441540_aaaa.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811131447394_aaaa1.cs" />
-    <Compile Include="Migrations\201811131447394_aaaa1.Designer.cs">
-      <DependentUpon>201811131447394_aaaa1.cs</DependentUpon>
+    <Compile Include="Migrations\201811131808395_aaa.cs" />
+    <Compile Include="Migrations\201811131808395_aaa.Designer.cs">
+      <DependentUpon>201811131808395_aaa.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Administrator.cs" />
@@ -176,6 +173,7 @@
     <Compile Include="Models\Ogloszenie.cs" />
     <Compile Include="Models\Ogloszenie_dla_rodzicow.cs" />
     <Compile Include="Models\Plik.cs" />
+    <Compile Include="Models\Profil.cs" />
     <Compile Include="Models\PrzedmiotKlasaNauczyciel.cs" />
     <Compile Include="Models\Testy_ucznia.cs" />
     <Compile Include="Models\Tresc_ksztalcenia.cs" />
@@ -228,6 +226,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Uczen\Create.cshtml" />
+    <Content Include="Views\Uczen\Delete.cshtml" />
+    <Content Include="Views\Uczen\Details.cshtml" />
+    <Content Include="Views\Uczen\Edit.cshtml" />
+    <Content Include="Views\Uczen\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -246,11 +249,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201811131441540_aaaa.resx">
-      <DependentUpon>201811131441540_aaaa.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811131447394_aaaa1.resx">
-      <DependentUpon>201811131447394_aaaa1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811131808395_aaa.resx">
+      <DependentUpon>201811131808395_aaa.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

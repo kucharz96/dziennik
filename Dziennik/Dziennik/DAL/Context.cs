@@ -9,6 +9,8 @@ namespace Dziennik.DAL
 
         public Context() : base("Context")
         {
+            Database.SetInitializer<Context>(new CreateDatabaseIfNotExists<Context>());
+
         }
 
         public DbSet<Administrator> Administratorzy { get; set; }
