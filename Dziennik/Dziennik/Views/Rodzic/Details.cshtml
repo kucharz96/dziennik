@@ -1,50 +1,69 @@
-﻿@model Dziennik.Models.Rodzic
-
+﻿@model dynamic
 @{
     ViewBag.Title = "Details";
 }
+<html>
 
-<h2>Details</h2>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <!--Informacje o rodzicu-->
+    <h2>Rodzic</h2>
+    <table class="table" align="center">
+        <tr>
+            <th>ID</th>
+            <th>Imie</th>
+            <th>Nazwisko</th>
+        </tr>
+        @foreach (var rodzic in Model.Rodzic)
+        {
+            <tr>
+                <td>@rodzic.ID</td>
+                <td>@rodzic.imie</td>
+                <td>@rodzic.nazwisko</td>
 
-<div>
-    <h4>Rodzic</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.imie)
-        </dt>
+            </tr>
+        }
+    </table>
 
-        <dd>
-            @Html.DisplayFor(model => model.imie)
-        </dd>
+    <!--Informacje o dzieciach rodzica-->
+    <h2>Dzieci rodzica (uczniowie)</h2>
+    <table class="table" align="center">
+        <tr>
+            <th>ID</th>
+            <th>Imie</th>
+            <th>Nazwisko</th>
+        </tr>
+        @foreach (var uczen in Model.Uczen)
+        {
+            <tr>
+                <td>@uczen.ID</td>
+                <td>@uczen.imie</td>
+                <td>@uczen.nazwisko</td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.nazwisko)
-        </dt>
+            </tr>
+        }
+    </table>
+    <!--Informacje o ogloszeniach od nauczyciela-->
+    <h2>Ogloszenia rodzica</h2>
+    <table class="table" align="center">
+        <tr>
+            <th>ID</th>
+            <th>Imie</th>
+            <th>Nazwisko</th>
+        </tr>
+        @foreach (var ogl in Model.Ogloszenie_dla_rodzicow)
+        {
+        <tr>
+            <td>@ogl.ID</td>
+            <td>@ogl.naglowek</td>
+            <td>@ogl.tresc</td>
+            <td>@ogl.data</td>
+        </tr>
+        }
+    </table>
 
-        <dd>
-            @Html.DisplayFor(model => model.nazwisko)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.login)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.login)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.haslo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.haslo)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+</body>
+</html>
