@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Dynamic;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Dziennik.DAL;
 using Dziennik.Models;
-
+using System.Configuration;
+using System.Data.SqlClient;
 namespace Dziennik.Controllers
 {
     public class NauczycielController : Controller
@@ -29,12 +31,50 @@ namespace Dziennik.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Nauczyciel nauczyciel = db.Nauczyciele.Find(id);
-            if (nauczyciel == null)
+
+            //Tworzenie dynamicznego modelu
+            dynamic model = new ExpandoObject();
+            model.Nauczyciel = GetNauczyciel();
+            //model.Uczen = GetUczniowie();
+            //model.Ogloszenie_dla_rodzicow = GetOgloszenia_dla_rodzica();
+            //Lista o Nauczycielu 
+            List<Nauczyciel> GetNauczyciel()
             {
-                return HttpNotFound();
+                List<Nauczyciel> nauczyciel = new List<Nauczyciel>();
+                //int? identyfikator = id;
+                string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["Context"].ConnectionString;
+
+                //string constr = ConfigurationManager.ConnectionStrings["Data Source=(LocalDb;Initial Catalog=Dziennik;Integrated Security=SSPI;"];
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT * FROM dbo.Nauczyciel WHERE dbo.Nauczyciel.ID = @id";
+                    SqlCommand cmd = new SqlCommand(query);
+                    //Specyfikacja przekazanego parametru do query
+                    cmd.Parameters.AddWithValue("@id", id);
+                    using (cmd)
+                    {
+                        cmd.Connection = con;
+                        con.Open();
+                        using (SqlDataReader sdr = cmd.ExecuteReader())
+                        {
+                            while (sdr.Read())
+                            {
+                                nauczyciel.Add(new Nauczyciel
+                                {
+                                    NauczycielID = Convert.ToInt32(sdr["ID"]),
+                                    imie = sdr["imie"].ToString(),
+                                    nazwisko = sdr["nazwisko"].ToString(),
+                                    
+
+                                });
+                            }
+                        }
+                        con.Close();
+                        return nauczyciel;
+                    }
+                }
             }
-            return View(nauczyciel);
+            return View(model);
         }
 
         // GET: Nauczyciel/Create
