@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Dynamic;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -32,12 +33,12 @@ namespace Dziennik.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Uczen uczen = db.Uczniowie.Find(id);
-            if (uczen == null)
-            {
-                return HttpNotFound();
-            }
-            return View(uczen);
+           dynamic obj = new ExpandoObject();
+            obj.uczen = db.Uczniowie.Find(id);
+            obj.oceny = db.Oceny.Include(s => s.Uczen).Include(s => s.Nauczyciel).Where(s => s.UczenID == id).ToList();
+            
+          
+            return View(obj);
         }
 
         // GET: Uczen/Create
