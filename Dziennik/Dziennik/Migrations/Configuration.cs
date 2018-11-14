@@ -109,9 +109,9 @@ namespace Dziennik.Migrations
 
             var nieobecnosci = new List<Nieobecnosc>
             {
-               new Nieobecnosc{UczenID = 1, date = new DateTime(2008, 5, 1, 8, 30, 52)},
-               new Nieobecnosc{UczenID = 2, date = new DateTime(2008, 5, 1, 8, 30, 52)},
-               new Nieobecnosc{UczenID = 3, date = new DateTime(2008, 5, 1, 8, 30, 52)}
+               new Nieobecnosc{UczenID = 1, date = new DateTime(2008, 5, 1, 8, 30, 52), LekcjaID =1},
+               new Nieobecnosc{UczenID = 2, date = new DateTime(2008, 5, 1, 8, 30, 52), LekcjaID =2},
+               new Nieobecnosc{UczenID = 3, date = new DateTime(2008, 5, 1, 8, 30, 52), LekcjaID =3}
 
             };
 

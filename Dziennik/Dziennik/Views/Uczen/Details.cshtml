@@ -1,4 +1,4 @@
-﻿@model dynam
+﻿@model dynamic
 
 @{
     ViewBag.Title = "Details";
@@ -11,108 +11,182 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.uczen.Klasa.nazwa)
+            Klasa
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Klasa.nazwa)
+            @Model.uczen.Klasa.nazwa
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Rodzic.imie)
+            Imie rodzica
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Rodzic.imie)
+            @Model.uczen.Rodzic.imie
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.imie)
+            Imie
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.imie)
+            @Model.uczen.imie
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.nazwisko)
+            Nazwisko
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.nazwisko)
+            @Model.uczen.nazwisko
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.login)
+            Login
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.login)
+            @Model.uczen.login
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.haslo)
+            Haslo
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.haslo)
+            @Model.uczen.login
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
+
 </p>
 
-<h2>Nauczyciele</h2>
+<h2>Oceny</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create", "Nauczyciel", null, null)
-</p>
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nauczyciele[0].Klasa.nazwa)
+            Nauczyciel
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Nauczyciele[0].imie)
+            Wartosc
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Nauczyciele[0].nazwisko)
+            Waga
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Nauczyciele[0].login)
+            data
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Nauczyciele[0].haslo)
+
         </th>
         <th></th>
     </tr>
 
-    @foreach (var item in Model.Nauczyciele)
+    @foreach (var item in Model.oceny)
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Klasa.nazwa)
+                @item.Nauczyciel.imie
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.imie)
+                @item.ocena
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.nazwisko)
+                @item.waga
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.login)
+                @item.data
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+<h2>Spoznienia</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Godzina
+        </th>
+        <th>
+            Dzien
+        </th>
+        <th>
+            Data
+        </th>
+        <th>
+
+        </th>
+        <th>
+
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.spoznienia)
+    {
+        <tr>
+            <td>
+                @item.Lekcja.godzina
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.haslo)
+                @item.Lekcja.dzien
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", "Nauczyciel", new { id = item.NauczycielID }, null) |
-                @Html.ActionLink("Details", "Details", "Nauczyciel", new { id = item.NauczycielID }, null) |
-                @Html.ActionLink("Delete", "Delete", "Nauczyciel", new { id = item.NauczycielID }, null)
+                @item.date
             </td>
+
+
+        </tr>
+    }
+
+</table>
+
+<h2>Nieobecnosci</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Godzina
+        </th>
+        <th>
+            Dzien
+        </th>
+        <th>
+            Data
+        </th>
+        <th>
+
+        </th>
+        <th>
+
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.nieobecnosci)
+    {
+        <tr>
+            <td>
+                @item.Lekcja.godzina
+            </td>
+            <td>
+                @item.Lekcja.dzien
+            </td>
+            <td>
+                @item.date
+            </td>
+
+
         </tr>
     }
 

@@ -10,23 +10,46 @@
 </head>
 <body>
     <!--Informacje o rodzicu-->
-    <h2>Rodzic</h2>
-    <table class="table" align="center">
-        <tr>
-            <th>ID</th>
-            <th>Imie</th>
-            <th>Nazwisko</th>
-        </tr>
-        @foreach (var rodzic in Model.Rodzic)
-        {
-            <tr>
-                <td>@rodzic.ID</td>
-                <td>@rodzic.imie</td>
-                <td>@rodzic.nazwisko</td>
+    <div>
+        <h4>Nauczyciel</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            
 
-            </tr>
-        }
-    </table>
+            <dt>
+                Imie
+            </dt>
+
+            <dd>
+                @Model.rodzic.imie
+            </dd>
+
+            <dt>
+                Nazwisko
+            </dt>
+
+            <dd>
+                @Model.rodzic.nazwisko
+            </dd>
+
+            <dt>
+                Login
+            </dt>
+
+            <dd>
+                @Model.rodzic.login
+            </dd>
+
+            <dt>
+               Hasło
+            </dt>
+
+            <dd>
+                @Model.rodzic.haslo
+            </dd>
+
+        </dl>
+    </div>
 
     <!--Informacje o dzieciach rodzica-->
     <h2>Dzieci rodzica (uczniowie)</h2>
@@ -36,7 +59,7 @@
             <th>Imie</th>
             <th>Nazwisko</th>
         </tr>
-        @foreach (var uczen in Model.Uczen)
+        @foreach (var uczen in Model.uczniowie)
         {
             <tr>
                 <td>@uczen.ID</td>
@@ -54,7 +77,7 @@
             <th>Imie</th>
             <th>Nazwisko</th>
         </tr>
-        @foreach (var ogl in Model.Ogloszenie_dla_rodzicow)
+        @foreach (var ogl in Model.ogloszenia)
         {
         <tr>
             <td>@ogl.ID</td>

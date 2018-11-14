@@ -35,9 +35,11 @@ namespace Dziennik.Controllers
             }
            dynamic obj = new ExpandoObject();
             obj.uczen = db.Uczniowie.Find(id);
-            obj.oceny = db.Oceny.Include(s => s.Uczen).Include(s => s.Nauczyciel).Where(s => s.UczenID == id).ToList();
-            
-          
+            obj.oceny = db.Oceny.Include(s => s.Nauczyciel).Where(s => s.UczenID == id);
+            obj.spoznienia = db.Spoznienia.Include(s => s.Lekcja).Where(s => s.UczenID == id);
+            obj.nieobecnosci = db.Nieobecnosci.Include(s => s.Lekcja).Where(s => s.UczenID == id);
+            obj.testy = db.Testy_ucznia.Where(s => s.UczenID == id);
+
             return View(obj);
         }
 
