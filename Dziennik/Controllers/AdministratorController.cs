@@ -15,12 +15,13 @@ namespace Dziennik.Controllers
     {
         private Context db = new Context();
 
-        // GET: Administrator
+        // GET: Administratoro;jghv
+        //Siemka
         public ActionResult Index()
         {
             return View(db.Administratorzy.ToList());
         }
-
+        
         // GET: Administrator/Details/5
         public ActionResult Details(int? id)
         {
