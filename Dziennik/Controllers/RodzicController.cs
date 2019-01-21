@@ -167,6 +167,49 @@ namespace Dziennik.Controllers
             //ogloszenia_dla_rodzicow = ogloszenia_dla_rodzicow.Where(o=>o.KlasaID==dzieci.);
             return View(ogloszenia.ToList());
         }
+
+        public ActionResult Oceny(string data)
+        {
+            int? id = null;
+            if(data != null)
+                id = Int32.Parse(data);
+                
+
+            if (Session["Status"] != "Rodzic")
+                return RedirectToAction("Index", "Home");
+        
+
+            int id_rodzic = Int32.Parse((string)Session["UserID"]);
+            Rodzic rodzic = db.Rodzice.Find(id_rodzic);
+            var dzieci = db.Uczniowie.Where(s => s.RodzicID == id_rodzic).ToList();
+            ViewBag.dzieci = dzieci;
+
+            if (id == null)
+            {
+
+                if (dzieci.Count() == 0)
+                    return RedirectToAction("Index", "Home");
+                else
+                {
+                    ViewBag.imie = dzieci[0].imie;
+                    ViewBag.nazwisko = dzieci[0].nazwisko;
+                    int id_dziecka = dzieci[0].ID;
+                    var oceny = db.Oceny.Where(s => s.UczenID == id_dziecka).ToList();
+                    return View(oceny);
+                }
+
+            }
+            else
+            {
+                Uczen uczen = db.Uczniowie.Find(id);
+                if(uczen == null)
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                ViewBag.imie = uczen.imie;
+                ViewBag.nazwisko = uczen.nazwisko;
+                var oceny = db.Oceny.Where(s => s.UczenID == id).ToList();
+                return View(oceny);
+            }
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

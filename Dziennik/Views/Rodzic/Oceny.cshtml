@@ -1,10 +1,21 @@
-﻿@model IEnumerable<Dziennik.Models.Oceny>
+﻿@using Dziennik.Models
+
+@model IEnumerable<Dziennik.Models.Ocena>
 @{
     ViewBag.Title = "Oceny";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+
 }
 
-<h2>Oceny</h2>
+<h2>
+    Oceny ucznia: @ViewBag.imie @ViewBag.nazwisko
+</h2>
+
+<br />
+
+
+
 
 
 <table class="table">
@@ -51,8 +62,31 @@
             <td>
                 @Html.DisplayFor(modelItem => item.tresc)
             </td>
-            
+
         </tr>
     }
 
 </table>
+
+
+@using (Html.BeginForm("Oceny", "Rodzic", FormMethod.Get))
+{
+
+    <div class="form-group" align="center">
+        <label for="sel1">Wybierz ucznia:</label>
+        <select class="form-control" name="data" onchange="submit();" style="text-align-last:center;">
+            <option value="">--Wybierz--</option>
+
+            @foreach (var item in (List<Uczen>)ViewBag.dzieci)
+            {
+
+
+                <option value="@item.ID">@item.imie @item.nazwisko</option>
+
+
+            }
+
+</div>
+}
+
+<br />
