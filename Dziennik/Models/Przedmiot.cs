@@ -15,15 +15,14 @@ namespace Dziennik.Models
 
     {
         public int? ID { get; set; }
-        public string nazwa { get; set; }
-        public kl level { get; set; }
+        [Display(Name = "Nazwa")][Required] public string nazwa { get; set; }
+		[Display(Name = "Poziom")] [Required] public kl level { get; set; }
 
-        public virtual ICollection<PrzedmiotKlasaNauczyciel> Link { get; set; }
         public virtual ICollection<Ocena> Oceny { get; set; }
         public virtual ICollection<Lekcja> Lekcje { get; set; }
         public virtual ICollection<Plik> Pliki { get; set; }
         public virtual ICollection<Test> Testy { get; set; }
-        public virtual Tresc_ksztalcenia Tresc_ksztalcenia { get; set; }
+		[Display(Name = "Treść ksztalcenia")] public virtual Tresc_ksztalcenia Tresc_ksztalcenia { get; set; }
 
     }
 

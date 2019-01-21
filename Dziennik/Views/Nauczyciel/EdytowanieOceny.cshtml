@@ -1,0 +1,108 @@
+﻿@model Dziennik.Models.Ocena
+
+@{
+    ViewBag.Title = "EdytowanieOceny";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>EdytowanieOceny</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div>
+    <dl class="dl-horizontal">
+        <form method="get" action="" target="_blank" id="myForm1">
+            <dt>
+                @Html.DisplayNameFor(model => model.Nauczyciel.FullName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Nauczyciel.FullName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Przedmiot.nazwa)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Przedmiot.nazwa)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Uczen.FullName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Uczen.FullName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ocena)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ocena)
+            </dd>
+            <div class="form-group">
+                Wprowadz nową ocenę: <input type="text" name="ocena" id="ocena">
+            </div>
+            <dt>
+                @Html.DisplayNameFor(model => model.waga)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.waga)
+            </dd>
+            <div class="form-group">
+                Wprowadz nową wagę: <input type="number" name="waga" id="waga">
+            </div>
+            <dt>
+                @Html.DisplayNameFor(model => model.data)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.data)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.tresc)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.tresc)
+            </dd>
+
+            <div class="form-group">
+                Wprowadz nową tresc: <input type="text" name="tresc" id="tresc">
+            </div>
+            <dt>
+                @Html.DisplayNameFor(model => model.dataEdycji)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.dataEdycji)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.IdEdytujacego)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IdEdytujacego)
+            </dd>
+
+        </form>
+</dl>
+    
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

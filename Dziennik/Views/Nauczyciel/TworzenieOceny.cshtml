@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "TworzenieOceny";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Dodaj Ocenę</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Ocena</h4>
+    <hr />
+    <form method="get" action="" target="_blank" id="myForm1">
+        <div class="form-group">
+            Wprowadz ocene: <input type="text" name="ocena" id="ocena">
+        </div>
+        <div class="form-group">
+            Wprowadz wage: <input type="number" name="waga" id="waga">
+        </div>
+        <div class="form-group">
+            Wprowadz tresc: <input type="text" name="tresc" id="tresc">
+            </div>
+    </form>
+   
+        <div class="form-actions no-color">
+            <input type="submit" value="TworzenieOceny" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    
+
+
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

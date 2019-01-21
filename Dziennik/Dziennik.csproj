@@ -51,10 +51,22 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="FluentValidation, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.8.0.101\lib\net45\FluentValidation.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.4.1\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Primitives, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Primitives.4.3.0\lib\net45\System.ComponentModel.Primitives.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -150,6 +162,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionAttrs\RedirectIfNotAdmin.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -159,30 +172,90 @@
     <Compile Include="Controllers\LekcjaController.cs" />
     <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\NauczycielController.cs" />
+    <Compile Include="Controllers\OcenyController.cs" />
+    <Compile Include="Controllers\OgloszenieController.cs" />
+    <Compile Include="Controllers\Ogloszenie_dla_rodzicowController.cs" />
+    <Compile Include="Controllers\PlikController.cs" />
+    <Compile Include="Controllers\PrzedmiotController.cs" />
     <Compile Include="Controllers\RodzicController.cs" />
     <Compile Include="Controllers\UczenController.cs" />
+    <Compile Include="Controllers\UwagaController.cs" />
     <Compile Include="DAL\Context.cs" />
     <Compile Include="DAL\Initializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811141532126_abc.cs" />
-    <Compile Include="Migrations\201811141532126_abc.Designer.cs">
-      <DependentUpon>201811141532126_abc.cs</DependentUpon>
+    <Compile Include="Helpers\FileHandler.cs" />
+    <Compile Include="Migrations\201812160915074_filePath.cs" />
+    <Compile Include="Migrations\201812160915074_filePath.Designer.cs">
+      <DependentUpon>201812160915074_filePath.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811151309010_acv.cs" />
-    <Compile Include="Migrations\201811151309010_acv.Designer.cs">
-      <DependentUpon>201811151309010_acv.cs</DependentUpon>
+    <Compile Include="Migrations\201812161421251_ads.cs" />
+    <Compile Include="Migrations\201812161421251_ads.Designer.cs">
+      <DependentUpon>201812161421251_ads.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811151318498_asd.cs" />
-    <Compile Include="Migrations\201811151318498_asd.Designer.cs">
-      <DependentUpon>201811151318498_asd.cs</DependentUpon>
+    <Compile Include="Migrations\201812161426220_ads1.cs" />
+    <Compile Include="Migrations\201812161426220_ads1.Designer.cs">
+      <DependentUpon>201812161426220_ads1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811202323294_asa.cs" />
-    <Compile Include="Migrations\201811202323294_asa.Designer.cs">
-      <DependentUpon>201811202323294_asa.cs</DependentUpon>
+    <Compile Include="Migrations\201812171703396_WynikTestuUcznia.cs" />
+    <Compile Include="Migrations\201812171703396_WynikTestuUcznia.Designer.cs">
+      <DependentUpon>201812171703396_WynikTestuUcznia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812172115459_aaa.cs" />
+    <Compile Include="Migrations\201812172115459_aaa.Designer.cs">
+      <DependentUpon>201812172115459_aaa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812172214506_asd.cs" />
+    <Compile Include="Migrations\201812172214506_asd.Designer.cs">
+      <DependentUpon>201812172214506_asd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812180932027_czasTrwaniaTestuWSek.cs" />
+    <Compile Include="Migrations\201812180932027_czasTrwaniaTestuWSek.Designer.cs">
+      <DependentUpon>201812180932027_czasTrwaniaTestuWSek.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901051435547_aaaa.cs" />
+    <Compile Include="Migrations\201901051435547_aaaa.Designer.cs">
+      <DependentUpon>201901051435547_aaaa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901051443336_aaaaaa.cs" />
+    <Compile Include="Migrations\201901051443336_aaaaaa.Designer.cs">
+      <DependentUpon>201901051443336_aaaaaa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901052048071_aaaaaa1.cs" />
+    <Compile Include="Migrations\201901052048071_aaaaaa1.Designer.cs">
+      <DependentUpon>201901052048071_aaaaaa1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901081534004_oceny.cs" />
+    <Compile Include="Migrations\201901081534004_oceny.Designer.cs">
+      <DependentUpon>201901081534004_oceny.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901081540578_oceny1.cs" />
+    <Compile Include="Migrations\201901081540578_oceny1.Designer.cs">
+      <DependentUpon>201901081540578_oceny1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901091933377_rodzic.cs" />
+    <Compile Include="Migrations\201901091933377_rodzic.Designer.cs">
+      <DependentUpon>201901091933377_rodzic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901092022252_razdwa.cs" />
+    <Compile Include="Migrations\201901092022252_razdwa.Designer.cs">
+      <DependentUpon>201901092022252_razdwa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901092034004_razdwatrzy.cs" />
+    <Compile Include="Migrations\201901092034004_razdwatrzy.Designer.cs">
+      <DependentUpon>201901092034004_razdwatrzy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901131503476_ocea.cs" />
+    <Compile Include="Migrations\201901131503476_ocea.Designer.cs">
+      <DependentUpon>201901131503476_ocea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901131506132_ocea1.cs" />
+    <Compile Include="Migrations\201901131506132_ocea1.Designer.cs">
+      <DependentUpon>201901131506132_ocea1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Absencja.cs" />
     <Compile Include="Models\Administrator.cs" />
     <Compile Include="Models\Klasa.cs" />
     <Compile Include="Models\Nauczyciel.cs" />
@@ -192,7 +265,6 @@
     <Compile Include="Models\Ogloszenie_dla_rodzicow.cs" />
     <Compile Include="Models\Plik.cs" />
     <Compile Include="Models\Profil.cs" />
-    <Compile Include="Models\PrzedmiotKlasaNauczyciel.cs" />
     <Compile Include="Models\Testy_ucznia.cs" />
     <Compile Include="Models\Tresc_ksztalcenia.cs" />
     <Compile Include="Models\Lekcja.cs" />
@@ -203,9 +275,14 @@
     <Compile Include="Models\Test.cs" />
     <Compile Include="Models\Uczen.cs" />
     <Compile Include="Models\Uwaga.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Dziennik.dll" />
+    <Content Include="bin\Dziennik.pdb" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -219,6 +296,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="obj\Release\Dziennik.csproj.CoreCompileInputs.cache" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -230,57 +308,131 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Uploads\0aac401d-ed44-49ed-86c0-1860ebb4fdb3_1a.png" />
+    <Content Include="Uploads\c7d25bbb-ea80-46a8-bacc-63a87f35233e_login.gif" />
+    <Content Include="Views\Nauczyciel\Oceny.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Uczen\Create.cshtml" />
-    <Content Include="Views\Uczen\Delete.cshtml" />
-    <Content Include="Views\Uczen\Details.cshtml" />
-    <Content Include="Views\Uczen\Edit.cshtml" />
-    <Content Include="Views\Uczen\Index.cshtml" />
     <Content Include="Views\Administrator\Create.cshtml" />
     <Content Include="Views\Administrator\Delete.cshtml" />
     <Content Include="Views\Administrator\Details.cshtml" />
     <Content Include="Views\Administrator\Edit.cshtml" />
     <Content Include="Views\Administrator\Index.cshtml" />
-    <Content Include="Views\Rodzic\Create.cshtml" />
-    <Content Include="Views\Rodzic\Delete.cshtml" />
-    <Content Include="Views\Rodzic\Details.cshtml" />
-    <Content Include="Views\Rodzic\Edit.cshtml" />
-    <Content Include="Views\Rodzic\Index.cshtml" />
+    <Content Include="Views\Przedmiot\Create.cshtml" />
+    <Content Include="Views\Przedmiot\Delete.cshtml" />
+    <Content Include="Views\Przedmiot\Details.cshtml" />
+    <Content Include="Views\Przedmiot\Edit.cshtml" />
+    <Content Include="Views\Przedmiot\Index.cshtml" />
+    <Content Include="Views\Uczen\Create.cshtml" />
+    <Content Include="Views\Uczen\Delete.cshtml" />
+    <Content Include="Views\Uczen\Details.cshtml" />
+    <Content Include="Views\Uczen\Edit.cshtml" />
+    <Content Include="Views\Uczen\Index.cshtml" />
     <Content Include="Views\Klasa\Create.cshtml" />
     <Content Include="Views\Klasa\Delete.cshtml" />
     <Content Include="Views\Klasa\Details.cshtml" />
     <Content Include="Views\Klasa\Edit.cshtml" />
     <Content Include="Views\Klasa\Index.cshtml" />
-    <Content Include="Views\Lekcja\Create.cshtml" />
-    <Content Include="Views\Lekcja\Delete.cshtml" />
-    <Content Include="Views\Lekcja\Details.cshtml" />
-    <Content Include="Views\Lekcja\Edit.cshtml" />
-    <Content Include="Views\Lekcja\Index.cshtml" />
+    <Content Include="Views\Rodzic\Create.cshtml" />
+    <Content Include="Views\Rodzic\Delete.cshtml" />
+    <Content Include="Views\Rodzic\Details.cshtml" />
+    <Content Include="Views\Rodzic\Edit.cshtml" />
+    <Content Include="Views\Rodzic\Index.cshtml" />
     <Content Include="Views\Nauczyciel\Create.cshtml" />
     <Content Include="Views\Nauczyciel\Delete.cshtml" />
     <Content Include="Views\Nauczyciel\Details.cshtml" />
     <Content Include="Views\Nauczyciel\Edit.cshtml" />
     <Content Include="Views\Nauczyciel\Index.cshtml" />
+    <Content Include="Views\Lekcja\Create.cshtml" />
+    <Content Include="Views\Lekcja\Delete.cshtml" />
+    <Content Include="Views\Lekcja\Details.cshtml" />
+    <Content Include="Views\Lekcja\Edit.cshtml" />
+    <Content Include="Views\Lekcja\Index.cshtml" />
+    <Content Include="Views\Uczen\Oceny.cshtml" />
+    <Content Include="Views\Uczen\Przedmioty.cshtml" />
+    <Content Include="Views\Uczen\SzczegolyPrzedmiotu.cshtml" />
+    <Content Include="Views\Uczen\Pytanie.cshtml" />
+    <Content Include="Views\Uczen\Absencja.cshtml" />
+    <Content Include="Views\Uczen\UsuwanieNieobecnosci.cshtml" />
+    <Content Include="Views\Uczen\Wynik.cshtml" />
+    <Content Include="Views\Uczen\IstniejacyTest.cshtml" />
+    <Content Include="Views\Uczen\_Nieobecnosci.cshtml" />
+    <Content Include="Views\Uczen\_Spoznienia.cshtml" />
+    <Content Include="Views\Uczen\EdytowanieNieobecnosci.cshtml" />
+    <Content Include="Views\Uczen\DodawanieNieobecnosci.cshtml" />
+    <Content Include="Views\Nauczyciel\PlikiPrzedmiotu.cshtml" />
+    <Content Include="Views\Nauczyciel\Przedmioty.cshtml" />
+    <Content Include="Views\Uwaga\Create.cshtml" />
+    <Content Include="Views\Uwaga\Delete.cshtml" />
+    <Content Include="Views\Uwaga\Details.cshtml" />
+    <Content Include="Views\Uwaga\Edit.cshtml" />
+    <Content Include="Views\Uwaga\Index.cshtml" />
+    <Content Include="Views\Uczen\Uwagi.cshtml" />
+    <Content Include="Views\Uczen\TestyUcznia.cshtml" />
+    <Content Include="Views\Uczen\PlanLekcji.cshtml" />
+    <Content Include="Views\Ogloszenie\Create.cshtml" />
+    <Content Include="Views\Ogloszenie\Delete.cshtml" />
+    <Content Include="Views\Ogloszenie\Details.cshtml" />
+    <Content Include="Views\Ogloszenie\Edit.cshtml" />
+    <Content Include="Views\Ogloszenie\Index.cshtml" />
+    <Content Include="Views\Nauczyciel\LekcjeNauczyciela.cshtml" />
+    <Content Include="Views\Nauczyciel\LekcjaDoRaportu.cshtml" />
+    <Content Include="Views\Nauczyciel\UtworzRaport.cshtml" />
+    <Content Include="Views\Nauczyciel\ListaUczniow.cshtml" />
+    <Content Include="Views\Nauczyciel\TworzenieOceny.cshtml" />
+    <Content Include="Views\Nauczyciel\Klasy.cshtml" />
+    <Content Include="Views\Nauczyciel\UsuwanieOceny.cshtml" />
+    <Content Include="Views\Ogloszenie_dla_rodzicow\Create.cshtml" />
+    <Content Include="Views\Ogloszenie_dla_rodzicow\Delete.cshtml" />
+    <Content Include="Views\Ogloszenie_dla_rodzicow\Details.cshtml" />
+    <Content Include="Views\Ogloszenie_dla_rodzicow\Edit.cshtml" />
+    <Content Include="Views\Ogloszenie_dla_rodzicow\Index.cshtml" />
+    <Content Include="Views\Rodzic\Ogloszenia.cshtml" />
+    <Content Include="Views\Nauczyciel\EdytowanieOceny.cshtml" />
+    <Content Include="Views\Log\gdy_zalogowany.cshtml" />
     <Content Include="Views\Log\Login.cshtml" />
-    <Content Include="Views\Log\Zalogowany.cshtml" />
     <Content Include="Views\Log\Wyloguj.cshtml" />
-    <Content Include="Views\Log\Gdy_zalogowany.cshtml" />
+    <Content Include="Views\Log\Zalogowany.cshtml" />
+    <Content Include="Uploads\1129a8ec-e919-42c4-8c10-d8983456a349_iOS_zadanie_12.pdf" />
+    <Content Include="Views\Nauczyciel\PlanNauczyciela.cshtml" />
+    <Content Include="Views\Nauczyciel\Pytania.cshtml" />
+    <Content Include="Views\Nauczyciel\PytanieDodaj.cshtml" />
+    <Content Include="Views\Nauczyciel\PytanieEdytcja.cshtml" />
+    <Content Include="Views\Nauczyciel\PytanieUsun.cshtml" />
+    <Content Include="Views\Nauczyciel\RozkladNauczycieli.cshtml" />
+    <Content Include="Views\Nauczyciel\TestDodaj.cshtml" />
+    <Content Include="Views\Nauczyciel\TestEdytcja.cshtml" />
+    <Content Include="Views\Nauczyciel\TestUsun.cshtml" />
+    <Content Include="Views\Nauczyciel\Testy.cshtml" />
+    <Content Include="Views\Oceny\Create.cshtml" />
+    <Content Include="Views\Oceny\Delete.cshtml" />
+    <Content Include="Views\Oceny\Details.cshtml" />
+    <Content Include="Views\Oceny\Edit.cshtml" />
+    <Content Include="Views\Oceny\Index.cshtml" />
+    <Content Include="Views\Uczen\DodawanieSpoznienia.cshtml" />
+    <Content Include="Views\Uczen\EdytowanieSpoznienia.cshtml" />
+    <Content Include="Views\Uczen\Test.cshtml" />
+    <Content Include="Views\Uczen\UsuwanieSpoznienia.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Plik\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -291,22 +443,63 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201811141532126_abc.resx">
-      <DependentUpon>201811141532126_abc.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812160915074_filePath.resx">
+      <DependentUpon>201812160915074_filePath.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811151309010_acv.resx">
-      <DependentUpon>201811151309010_acv.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812161421251_ads.resx">
+      <DependentUpon>201812161421251_ads.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811151318498_asd.resx">
-      <DependentUpon>201811151318498_asd.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812161426220_ads1.resx">
+      <DependentUpon>201812161426220_ads1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811202323294_asa.resx">
-      <DependentUpon>201811202323294_asa.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812171703396_WynikTestuUcznia.resx">
+      <DependentUpon>201812171703396_WynikTestuUcznia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812172115459_aaa.resx">
+      <DependentUpon>201812172115459_aaa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812172214506_asd.resx">
+      <DependentUpon>201812172214506_asd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812180932027_czasTrwaniaTestuWSek.resx">
+      <DependentUpon>201812180932027_czasTrwaniaTestuWSek.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901051435547_aaaa.resx">
+      <DependentUpon>201901051435547_aaaa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901051443336_aaaaaa.resx">
+      <DependentUpon>201901051443336_aaaaaa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901052048071_aaaaaa1.resx">
+      <DependentUpon>201901052048071_aaaaaa1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901081534004_oceny.resx">
+      <DependentUpon>201901081534004_oceny.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901081540578_oceny1.resx">
+      <DependentUpon>201901081540578_oceny1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901091933377_rodzic.resx">
+      <DependentUpon>201901091933377_rodzic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901092022252_razdwa.resx">
+      <DependentUpon>201901092022252_razdwa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901092034004_razdwatrzy.resx">
+      <DependentUpon>201901092034004_razdwatrzy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901131503476_ocea.resx">
+      <DependentUpon>201901131503476_ocea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901131506132_ocea1.resx">
+      <DependentUpon>201901131506132_ocea1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

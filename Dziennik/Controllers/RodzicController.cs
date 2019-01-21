@@ -6,72 +6,86 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Dziennik.ActionAttrs;
 using Dziennik.DAL;
 using Dziennik.Models;
-using System.Dynamic;
-//using System.Data;
-using System.Configuration;
-using System.Data.SqlClient;
-//using System.Collections.Generic;
+
 namespace Dziennik.Controllers
 {
     public class RodzicController : Controller
     {
         private Context db = new Context();
 
-        // GET: Rodzic
-        public ActionResult Index()
+        public ActionResult Index(string search)
         {
-            return View(db.Rodzice.ToList());
+			if (Session["Status"] != "Admin")
+				return RedirectToAction("Index", "Home");
+
+            var rodzice = from s in db.Rodzice
+                            select s;
+            if (!String.IsNullOrEmpty(search))
+            {
+                rodzice = rodzice.Where(s => s.nazwisko.Contains(search)
+                                       || s.imie.Contains(search));
+            }
+            rodzice = rodzice.OrderByDescending(s => s.nazwisko);
+            return View(rodzice.ToList());
         }
 
-        // GET: Rodzic/Details/5
         public ActionResult Details(int? id)
         {
+			if (Session["Status"] != "Admin")
+				return RedirectToAction("Index", "Home");
 
-
-            if (id == null)
+			if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-       
-           
-            dynamic model = new ExpandoObject();
-            model.rodzic = db.Rodzice.Find(id);
-            model.uczniowie = db.Uczniowie.Where(s => s.RodzicID == id);
-            model.ogloszenia = db.Ogloszenia_dla_rodzicow.Where(s => s.RodzicID == id);
-          
-            return View(model);
+            Rodzic rodzic = db.Rodzice.Find(id);
+            if (rodzic == null)
+            {
+                return HttpNotFound();
+            }
+            return View(rodzic);
         }
 
-        // GET: Rodzic/Create
         public ActionResult Create()
         {
-            return View();
+			if (Session["Status"] != "Admin")
+				return RedirectToAction("Index", "Home");
+
+			return View();
         }
 
-        // POST: Rodzic/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,imie,nazwisko,login,haslo")] Rodzic rodzic)
         {
+			if (Session["Status"] != "Admin")
+				return RedirectToAction("Index", "Home");
+
+			List<Rodzic> rodzice = db.Rodzice.Where(a => a.login == rodzic.login).ToList();
+            if (rodzice.Count != 0)
+            {
+                ModelState.AddModelError("", "Podany login istnieje w bazie.");
+            }
             if (ModelState.IsValid)
             {
                 db.Rodzice.Add(rodzic);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            
 
             return View(rodzic);
         }
 
-        // GET: Rodzic/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+			if (Session["Status"] != "Admin")
+				return RedirectToAction("Index", "Home");
+
+			if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -83,26 +97,34 @@ namespace Dziennik.Controllers
             return View(rodzic);
         }
 
-        // POST: Rodzic/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,imie,nazwisko,login,haslo")] Rodzic rodzic)
         {
+			if (Session["Status"] != "Admin")
+				return RedirectToAction("Index", "Home");
+
+			List<Rodzic> rodzice = db.Rodzice.Where(a => a.login == rodzic.login).ToList();
+            if (rodzice.Count != 0)
+            {
+                ModelState.AddModelError("", "Podany login istnieje w bazie.");
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(rodzic).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            
             return View(rodzic);
         }
 
-        // GET: Rodzic/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+			if (Session["Status"] != "Admin")
+				return RedirectToAction("Index", "Home");
+
+			if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -114,17 +136,37 @@ namespace Dziennik.Controllers
             return View(rodzic);
         }
 
-        // POST: Rodzic/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Rodzic rodzic = db.Rodzice.Find(id);
+			if (Session["Status"] != "Admin")
+				return RedirectToAction("Index", "Home");
+
+			Rodzic rodzic = db.Rodzice.Find(id);
             db.Rodzice.Remove(rodzic);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult Ogloszenia()
+        {
+            if (Session["Status"] != "Rodzic")
+                return RedirectToAction("Index", "Home");
+            ViewBag.NauczycielID = Session["UserID"];
+            int id = Int32.Parse(ViewBag.NauczycielID);
+            Rodzic rodzic = db.Rodzice.Find(id);
 
+            var dzieci = from s in db.Uczniowie
+                         where s.RodzicID == id
+                        select s.KlasaID;
+            var ogloszenia = from s in db.Ogloszenia_dla_rodzicow
+                             from b in dzieci
+                             where s.KlasaID==b
+                        select s;
+            //var ogloszenia_dla_rodzicow = db.Ogloszenia_dla_rodzicow.Include(o => o.klasa).Include(o => o.Nauczyciel);
+            //ogloszenia_dla_rodzicow = ogloszenia_dla_rodzicow.Where(o=>o.KlasaID==dzieci.);
+            return View(ogloszenia.ToList());
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -133,5 +175,6 @@ namespace Dziennik.Controllers
             }
             base.Dispose(disposing);
         }
+		
     }
 }

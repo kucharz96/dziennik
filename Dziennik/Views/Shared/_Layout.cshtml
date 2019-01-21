@@ -28,13 +28,45 @@
                     @if (Session["Status"] == "Admin")
                     {
 
-                    <li>@Html.ActionLink("Administratorzy", "Administratorzy", "Administrator")</li>
-                    <li>@Html.ActionLink("Nauczyciele", "Nauczyciele", "Administrator")</li>
-                    <li>@Html.ActionLink("Uczniowie", "Uczniowie", "Administrator")</li>
-                    <li>@Html.ActionLink("Rodzicie", "Rodzice", "Administrator")</li>
-                    <li>@Html.ActionLink("Klasy", "Klasy", "Administrator")</li>
-                    <li>@Html.ActionLink("Przedmioty", "Przedmioty", "Administrator")</li>
-                    <li>@Html.ActionLink("Lekcje", "Lekcje", "Administrator")</li>
+                        <li>@Html.ActionLink("Administratorzy", "Index", "Administrator")</li>
+                        <li>@Html.ActionLink("Nauczyciele", "Index", "Nauczyciel")</li>
+                        <li>@Html.ActionLink("Uczniowie", "Index", "Uczen")</li>
+                        <li>@Html.ActionLink("Rodzice", "Index", "Rodzic")</li>
+                        <li>@Html.ActionLink("Klasy", "Index", "Klasa")</li>
+                        <li>@Html.ActionLink("Przedmioty", "Index", "Przedmiot")</li>
+                        <li>@Html.ActionLink("Lekcje", "Index", "Lekcja")</li>
+                    }
+
+                    @if (Session["Status"] == "Uczeń")
+                    {
+                        <li>@Html.ActionLink("Absencja", "Absencja", "Uczen")</li>
+                        <li>@Html.ActionLink("Oceny", "Oceny", "Uczen")</li>
+                        <li>@Html.ActionLink("E-nauczanie", "Przedmioty", "Uczen")</li>
+                        <li>@Html.ActionLink("Uwagi", "Uwagi", "Uczen")</li>
+                        <li>@Html.ActionLink("Testy", "TestyUcznia", "Uczen")</li>
+                        <li>@Html.ActionLink("Plan Lekcji", "PlanLekcji", "Uczen")</li>
+                        <li>@Html.ActionLink("Rozkład nauczycieli", "RozkladNauczycieli", "Nauczyciel")</li>
+
+
+                    }
+                    @if (Session["Status"] == "Rodzic")
+                    {
+                        <li>@Html.ActionLink("Absencja", "Absencja", "Uczen")</li>
+                        <li>@Html.ActionLink("Oceny", "Oceny", "Uczen")</li>
+                        <li>@Html.ActionLink("Uwagi", "Uwagi", "Uczen")</li>
+                        <li>@Html.ActionLink("Ogloszenia", "Ogloszenia", "Rodzic")</li>
+                        <li>@Html.ActionLink("Plan Lekcji", "PlanLekcji", "Uczen")</li>
+                        <li>@Html.ActionLink("Rozkład nauczycieli", "RozkladNauczycieli", "Nauczyciel")</li>
+
+
+                    }
+
+                    @if (Session["Status"] == "Nauczyciel")
+                    {
+                        <li>@Html.ActionLink("Przedmioty", "Przedmioty", "Nauczyciel")</li>
+                        <li>@Html.ActionLink("Ogloszenia", "Index", "Ogloszenie")</li>
+                        <li>@Html.ActionLink("Raporty obecności", "LekcjeNauczyciela", "Nauczyciel")</li>
+
                     }
 
                 </ul>

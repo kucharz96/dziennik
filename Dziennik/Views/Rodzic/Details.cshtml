@@ -1,92 +1,51 @@
-﻿@model dynamic
+﻿@model Dziennik.Models.Rodzic
+
 @{
     ViewBag.Title = "Details";
+    
 }
-<html>
 
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <!--Informacje o rodzicu-->
-    <div>
-        <h4>Nauczyciel</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            
+<h2>Details</h2>
 
-            <dt>
-                Imie
-            </dt>
+<div>
+    <h4>Rodzic</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.imie)
+        </dt>
 
-            <dd>
-                @Model.rodzic.imie
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.imie)
+        </dd>
 
-            <dt>
-                Nazwisko
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.nazwisko)
+        </dt>
 
-            <dd>
-                @Model.rodzic.nazwisko
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.nazwisko)
+        </dd>
 
-            <dt>
-                Login
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.login)
+        </dt>
 
-            <dd>
-                @Model.rodzic.login
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.login)
+        </dd>
 
-            <dt>
-               Hasło
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.haslo)
+        </dt>
 
-            <dd>
-                @Model.rodzic.haslo
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.haslo)
+        </dd>
 
-        </dl>
-    </div>
-
-    <!--Informacje o dzieciach rodzica-->
-    <h2>Dzieci rodzica (uczniowie)</h2>
-    <table class="table" align="center">
-        <tr>
-            <th>ID</th>
-            <th>Imie</th>
-            <th>Nazwisko</th>
-        </tr>
-        @foreach (var uczen in Model.uczniowie)
-        {
-            <tr>
-                <td>@uczen.ID</td>
-                <td>@uczen.imie</td>
-                <td>@uczen.nazwisko</td>
-
-            </tr>
-        }
-    </table>
-    <!--Informacje o ogloszeniach od nauczyciela-->
-    <h2>Ogloszenia rodzica</h2>
-    <table class="table" align="center">
-        <tr>
-            <th>ID</th>
-            <th>Imie</th>
-            <th>Nazwisko</th>
-        </tr>
-        @foreach (var ogl in Model.ogloszenia)
-        {
-        <tr>
-            <td>@ogl.ID</td>
-            <td>@ogl.naglowek</td>
-            <td>@ogl.tresc</td>
-            <td>@ogl.data</td>
-        </tr>
-        }
-    </table>
-
-</body>
-</html>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
