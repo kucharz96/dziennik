@@ -158,29 +158,46 @@ namespace Dziennik.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
         public ActionResult Oceny(int? id)
         {
+
             if (Session["Status"] == "Uczeń")
             {
                 var user = Session["UserID"];
                 string ide = user.ToString();
-                 id = Convert.ToInt32(ide);
+                id = Convert.ToInt32(ide);
+
+            }
+            if (Session["Status"] == "Rodzic")
+            {
+                var user = Session["UserID"];
+                string ide = user.ToString();
+                id = Convert.ToInt32(ide);
+                //Console.WriteLine(id);
+                var dzieci_rodzica = from s in db.Uczniowie
+                                     select s;
+                dzieci_rodzica = dzieci_rodzica.Where(s => s.RodzicID == id);
+                return View(dzieci_rodzica);
+
             }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+                var oceny = from s in db.Oceny
+                            select s;
+                oceny = oceny.Where(s => s.UczenID == id);
             
-            var oceny = from s in db.Oceny
-                          select s;
-            oceny = oceny.Where(s => s.UczenID==id);
-                                      
+
+
+
             if (oceny == null)
             {
                 return HttpNotFound();
             }
             
-            return View(oceny);
+            return View(model: oceny);
         }
         [HttpPost, ActionName("Oceny")]
         [ValidateAntiForgeryToken]
@@ -197,6 +214,7 @@ namespace Dziennik.Controllers
                 oceny = oceny.Include(o => o.Nauczyciel).Include(o => o.Przedmiot);
                 return View(oceny.ToList());
             }
+     
             else
             {
                 var oceny = from s in db.Oceny

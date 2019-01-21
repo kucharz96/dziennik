@@ -429,6 +429,7 @@
     <Content Include="Views\Uczen\EdytowanieSpoznienia.cshtml" />
     <Content Include="Views\Uczen\Test.cshtml" />
     <Content Include="Views\Uczen\UsuwanieSpoznienia.cshtml" />
+    <Content Include="Views\Rodzic\Oceny.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
