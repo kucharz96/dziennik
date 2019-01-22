@@ -435,6 +435,10 @@
     <Content Include="Views\Rodzic\_Spoznienia.cshtml" />
     <Content Include="Views\Rodzic\PlanLekcji.cshtml" />
     <Content Include="Views\Rodzic\Uwagi.cshtml" />
+    <Content Include="Views\Nauczyciel\Uwagi.cshtml" />
+    <Content Include="Views\Nauczyciel\Nowa_uwaga.cshtml" />
+    <Content Include="Views\Nauczyciel\Edytuj_uwage.cshtml" />
+    <Content Include="Views\Nauczyciel\Szczegoly_uwagi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
