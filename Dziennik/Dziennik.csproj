@@ -430,6 +430,11 @@
     <Content Include="Views\Uczen\Test.cshtml" />
     <Content Include="Views\Uczen\UsuwanieSpoznienia.cshtml" />
     <Content Include="Views\Rodzic\Oceny.cshtml" />
+    <Content Include="Views\Rodzic\Absencja.cshtml" />
+    <Content Include="Views\Rodzic\_Nieobecnosci.cshtml" />
+    <Content Include="Views\Rodzic\_Spoznienia.cshtml" />
+    <Content Include="Views\Rodzic\PlanLekcji.cshtml" />
+    <Content Include="Views\Rodzic\Uwagi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
