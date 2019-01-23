@@ -19,11 +19,17 @@ namespace Dziennik.Controllers
 		#region CRUD
 		public ActionResult Index()
         {
+            if (Session["Status"] != "Admin")
+                return RedirectToAction("Index", "Home");
+
             return View(db.Nauczyciele.ToList());
         }
 
         public ActionResult Details(int? id)
         {
+            if (Session["Status"] != "Admin")
+                return RedirectToAction("Index", "Home");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -38,6 +44,9 @@ namespace Dziennik.Controllers
 
         public ActionResult Create()
         {
+            if (Session["Status"] != "Admin")
+                return RedirectToAction("Index", "Home");
+
             return View();
         }
 
@@ -57,6 +66,9 @@ namespace Dziennik.Controllers
 
         public ActionResult Edit(int? id)
         {
+            if (Session["Status"] != "Admin")
+                return RedirectToAction("Index", "Home");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -995,6 +1007,126 @@ namespace Dziennik.Controllers
 
 
         #endregion
+
+
+        public ActionResult Uwagi(int? id)
+        {
+            if (Session["Status"] != "Nauczyciel")
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var uwagi = db.Uwagi.Where(s => s.UczenID == id);
+            ViewBag.imie = db.Uczniowie.Find(id).imie;
+            ViewBag.nazwisko = db.Uczniowie.Find(id).nazwisko;
+            ViewBag.id = id;
+            return View(uwagi);
+
+        }
+
+
+        public ActionResult Nowa_uwaga(int? id)
+        {
+            if (Session["Status"] != "Nauczyciel")
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var userId = Convert.ToInt32(Session["UserID"]);
+
+
+            ViewBag.NauczycielID = userId;
+            ViewBag.UczenID = id;
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Nowa_uwaga(int? id,[Bind(Include = "ID,naglowek,tresc,date")] Uwaga uwaga)
+        {
+            var userId = Convert.ToInt32(Session["UserID"]);
+
+            uwaga.NauczycielID = userId;
+            uwaga.UczenID = id;
+            uwaga.date = DateTime.Now;
+            if (ModelState.IsValid)
+            {
+                db.Uwagi.Add(uwaga);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+
+
+            ViewBag.NauczycielID = userId;
+            ViewBag.UczenID = id;
+            return View(uwaga);
+        }
+
+
+        public ActionResult Edytuj_uwage(int? id)
+        {
+            if (Session["Status"] != "Nauczyciel")
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var userId = Convert.ToInt32(Session["UserID"]);
+            Uwaga uwaga = db.Uwagi.Find(id);
+
+            ViewBag.NauczycielID = userId;
+            ViewBag.UczenID = id;
+            return View(uwaga);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edytuj_uwage(int? id, [Bind(Include = "ID,naglowek,tresc,date")] Uwaga uwaga)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var userId = Convert.ToInt32(Session["UserID"]);
+                uwaga.NauczycielID = userId;
+                uwaga.UczenID = id;
+                uwaga.date = DateTime.Now;
+
+                db.Entry(uwaga).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(uwaga);
+        }
+
+        public ActionResult Szczegoly_uwagi(int? id)
+        {
+            if (Session["Status"] != "Nauczyciel")
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ViewBag.id = id;
+
+            Uwaga uwaga = db.Uwagi.Find(id);
+
+            
+            return View(uwaga);
+        }
 
 
         #region Pytania
