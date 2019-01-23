@@ -10,7 +10,7 @@
 @using (Html.BeginForm("EdycjaProfilu", "Rodzic", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
+      @Html.HiddenFor(model => model.ID)
     <div class="form-horizontal">
         <h4>Dane</h4>
         <hr />
