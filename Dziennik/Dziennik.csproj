@@ -266,6 +266,10 @@
     <Compile Include="Migrations\201901231623597_sadjuiahuiasbdhduiosnj1.Designer.cs">
       <DependentUpon>201901231623597_sadjuiahuiasbdhduiosnj1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901231730285_aaaaaaaaa.cs" />
+    <Compile Include="Migrations\201901231730285_aaaaaaaaa.Designer.cs">
+      <DependentUpon>201901231730285_aaaaaaaaa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Absencja.cs" />
     <Compile Include="Models\Administrator.cs" />
@@ -541,6 +545,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901231623597_sadjuiahuiasbdhduiosnj1.resx">
       <DependentUpon>201901231623597_sadjuiahuiasbdhduiosnj1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901231730285_aaaaaaaaa.resx">
+      <DependentUpon>201901231730285_aaaaaaaaa.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
