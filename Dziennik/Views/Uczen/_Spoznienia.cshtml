@@ -1,8 +1,6 @@
 ﻿@model IEnumerable<Dziennik.Models.Spoznienie>
 
-<p>
-    @Html.ActionLink("Create New", "DodawanieSpoznienia")
-</p>
+
 
 <table class="table">
     <tr>
@@ -30,10 +28,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.date)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "EdytowanieSpoznienia", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "UsuwanieSpoznienia", new { id = item.ID })
-            </td>
+           
         </tr>
     }
 
