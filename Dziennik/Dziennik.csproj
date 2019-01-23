@@ -435,6 +435,8 @@
     <Content Include="Views\Rodzic\_Spoznienia.cshtml" />
     <Content Include="Views\Rodzic\PlanLekcji.cshtml" />
     <Content Include="Views\Rodzic\Uwagi.cshtml" />
+    <Content Include="Views\Rodzic\UsuwanieNieobecnosci.cshtml" />
+    <Content Include="Views\Rodzic\EdycjaProfilu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

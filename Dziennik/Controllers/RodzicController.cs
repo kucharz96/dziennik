@@ -282,8 +282,8 @@ namespace Dziennik.Controllers
             if (Session["Status"] != "Rodzic")
                 return RedirectToAction("Index", "Home");
 
-           
             var id_rodzica = Convert.ToInt32(Session["UserID"]);
+           
             Rodzic rodzic = db.Rodzice.Find(id_rodzica);
             var dzieci = db.Uczniowie.Where(s => s.RodzicID == id_rodzica).ToList();
             ViewBag.dzieci = dzieci;
@@ -368,6 +368,68 @@ namespace Dziennik.Controllers
                 uwagi = uwagi.Where(s => s.ID == id);
                 return View(uwagi);
             }
+        }
+        public ActionResult UsuwanieNieobecnosci(int? id)
+        {
+            if (Session["Status"] != "Rodzic")
+                return RedirectToAction("Index", "Home");
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var nieobecnosc = db.Nieobecnosci.Find(id);
+            var nieobecnosci = from s in db.Nieobecnosci
+                               select s;
+            nieobecnosc.Status = Nieobecnosc.status.Usprawiedliwiona;
+            db.Entry(nieobecnosc).State = EntityState.Modified;
+            db.SaveChanges();
+            return View(nieobecnosc);
+        }
+        public ActionResult EdycjaProfilu()
+        {
+            if (Session["Status"] != "Rodzic")
+                return RedirectToAction("Index", "Home");
+            var id = Convert.ToInt32(Session["UserID"]);
+            Rodzic rodzic = db.Rodzice.Find(id);
+           // ViewBag.Imie = rodzic.imie;
+            //ViewBag.Nazwisko = rodzic.nazwisko;
+           // ViewBag.Email = rodzic.Email;
+
+            return View(rodzic);
+            /*
+             *   Spoznienie spoznienie = db.Spoznienia.Find(id);
+            if (spoznienie == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.LekcjaID = new SelectList(db.Lekcja, "ID", "PrzedmiotID", spoznienie.LekcjaID);
+            ViewBag.UczenID = new SelectList(db.Uczniowie, "ID", "FullName", spoznienie.UczenID);
+            return View(spoznienie);
+             * */
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EdycjaProfilu([Bind(Include = "imie, nazwisko, Email")]Rodzic userprofile)
+        {
+            if (ModelState.IsValid)
+            {
+                string username = User.Identity.Name;
+                // Get the userprofile
+                Rodzic user = db.Rodzice.FirstOrDefault(u => u.login.Equals(username));
+
+                // Update fields
+                user.imie = userprofile.imie;
+                user.nazwisko = userprofile.nazwisko;
+                user.Email = userprofile.Email;
+
+                db.Entry(user).State = EntityState.Modified;
+
+                db.SaveChanges();
+
+                return RedirectToAction("Index", "Home"); // or whatever
+            }
+            
+           return View(userprofile);
         }
         protected override void Dispose(bool disposing)
         {
