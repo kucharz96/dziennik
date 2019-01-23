@@ -254,9 +254,22 @@
     <Compile Include="Migrations\201901131506132_ocea1.Designer.cs">
       <DependentUpon>201901131506132_ocea1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901231533462_aaaaaaa.cs" />
+    <Compile Include="Migrations\201901231533462_aaaaaaa.Designer.cs">
+      <DependentUpon>201901231533462_aaaaaaa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901231546048_sadjuiahuiasbdhduiosnj.cs" />
+    <Compile Include="Migrations\201901231546048_sadjuiahuiasbdhduiosnj.Designer.cs">
+      <DependentUpon>201901231546048_sadjuiahuiasbdhduiosnj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901231623597_sadjuiahuiasbdhduiosnj1.cs" />
+    <Compile Include="Migrations\201901231623597_sadjuiahuiasbdhduiosnj1.Designer.cs">
+      <DependentUpon>201901231623597_sadjuiahuiasbdhduiosnj1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Absencja.cs" />
     <Compile Include="Models\Administrator.cs" />
+    <Compile Include="Models\Zapytanie.cs" />
     <Compile Include="Models\Klasa.cs" />
     <Compile Include="Models\Nauczyciel.cs" />
     <Compile Include="Models\Nieobecnosc.cs" />
@@ -444,6 +457,8 @@
     <Content Include="Views\Nauczyciel\Absencja_wszystkie.cshtml" />
     <Content Include="Views\Nauczyciel\_Nieobecnosci.cshtml" />
     <Content Include="Views\Nauczyciel\_Spoznienia.cshtml" />
+    <Content Include="Views\Nauczyciel\Pytania_rodzicow.cshtml" />
+    <Content Include="Views\Nauczyciel\Odpowiedz_pytanie.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -515,6 +530,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901131506132_ocea1.resx">
       <DependentUpon>201901131506132_ocea1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901231533462_aaaaaaa.resx">
+      <DependentUpon>201901231533462_aaaaaaa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901231546048_sadjuiahuiasbdhduiosnj.resx">
+      <DependentUpon>201901231546048_sadjuiahuiasbdhduiosnj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901231623597_sadjuiahuiasbdhduiosnj1.resx">
+      <DependentUpon>201901231623597_sadjuiahuiasbdhduiosnj1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

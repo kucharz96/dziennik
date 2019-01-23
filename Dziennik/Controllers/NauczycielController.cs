@@ -1274,13 +1274,48 @@ namespace Dziennik.Controllers
                 return RedirectToAction("Index");
             
         }
-    
+
+        public ActionResult Pytania_rodzicow() {
+            if (Session["Status"] != "Nauczyciel")
+            {
+                return RedirectToAction("Index", "Home");
+
+            }
+            var userId = Convert.ToInt32(Session["UserID"]);
+
+            var zapytania = db.Zapytania.Where(s => s.NauczycielID == userId);
+
+            return View(zapytania);
 
 
 
 
-            #region Pytania
-            public ActionResult Pytania(int? id)
+        }
+
+        public ActionResult Odpowiedz_pytanie(int? id)
+        {
+            if (Session["Status"] != "Nauczyciel")
+            {
+                return RedirectToAction("Index", "Home");
+
+            }
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+
+            Zapytanie zapytanie = db.Zapytania.Find(id);
+
+            return View(zapytanie);
+
+        }
+
+
+
+        #region Pytania
+        public ActionResult Pytania(int? id)
         {
             if (Session["Status"] != "Nauczyciel")
                 return RedirectToAction("Index", "Home");
