@@ -1,8 +1,5 @@
 ﻿@model IEnumerable<Dziennik.Models.Nieobecnosc>
 
-<p>
-    @Html.ActionLink("Create New", "DodawanieNieobecnosci")
-</p>
 
 <table class="table">
     <tr>
@@ -37,10 +34,7 @@
             @Html.DisplayFor(modelItem => item.Status)
         </td>
 		
-        <td>
-            @Html.ActionLink("Edit", "EdytowanieNieobecnosci", new { id = item.ID }) |
-            @Html.ActionLink("Delete", "UsuwanieNieobecnosci", new { id = item.ID })
-        </td>
+   
     </tr>
     }
 

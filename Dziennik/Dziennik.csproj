@@ -439,6 +439,11 @@
     <Content Include="Views\Nauczyciel\Nowa_uwaga.cshtml" />
     <Content Include="Views\Nauczyciel\Edytuj_uwage.cshtml" />
     <Content Include="Views\Nauczyciel\Szczegoly_uwagi.cshtml" />
+    <Content Include="Views\Nauczyciel\Wychowankowie.cshtml" />
+    <Content Include="Views\Nauczyciel\Oceny_wszystkie.cshtml" />
+    <Content Include="Views\Nauczyciel\Absencja_wszystkie.cshtml" />
+    <Content Include="Views\Nauczyciel\_Nieobecnosci.cshtml" />
+    <Content Include="Views\Nauczyciel\_Spoznienia.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
