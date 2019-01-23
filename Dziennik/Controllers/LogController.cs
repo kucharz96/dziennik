@@ -68,7 +68,7 @@ namespace Dziennik.Controllers
                     Session["Name"] = nauczyciele.imie.ToString();
                     Session["Forname"] = nauczyciele.nazwisko.ToString();
                     Session["Status"] = "Nauczyciel";
-                    return RedirectToAction("Zalogowany");
+                    return RedirectToAction("Pytania_rodzicow","Nauczyciel");
                 }
                 ViewBag.message = "Błędny login lub hasło";
             }

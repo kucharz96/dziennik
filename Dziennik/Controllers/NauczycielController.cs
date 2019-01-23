@@ -1208,7 +1208,7 @@ namespace Dziennik.Controllers
             return View(model);
         }
 
-        
+
         public async System.Threading.Tasks.Task<ActionResult> Wyslij_oceny(int? id)
         {
             if (Session["Status"] != "Nauczyciel")
@@ -1238,41 +1238,41 @@ namespace Dziennik.Controllers
                 if (o.Przedmiot.nazwa != przedmiot)
                 {
                     przedmiot = o.Przedmiot.nazwa;
-                    body += "<b>"+ przedmiot+ "</b>" + "<br><br>";
+                    body += "<b>" + przedmiot + "</b>" + "<br><br>";
                 }
 
                 body += "<b>" + o.ocena + "</b>" + " (" + o.waga + ") - " + o.tresc + "<br>";
 
             }
-                
-                      
 
 
-            
-                var message = new MailMessage();
-               
-                    message.To.Add(new MailAddress(rodzic.Email));
-                
-                message.From = new MailAddress("mojagracv@gmail.com");
-                message.Subject = "Zestawienie ocen " + uczen.imie + " " + uczen.nazwisko;
-                message.Body = body;
-                message.IsBodyHtml = true;
 
-                using (var smtp = new SmtpClient())
+
+
+            var message = new MailMessage();
+
+            message.To.Add(new MailAddress(rodzic.Email));
+
+            message.From = new MailAddress("mojagracv@gmail.com");
+            message.Subject = "Zestawienie ocen " + uczen.imie + " " + uczen.nazwisko;
+            message.Body = body;
+            message.IsBodyHtml = true;
+
+            using (var smtp = new SmtpClient())
+            {
+                var credential = new NetworkCredential
                 {
-                    var credential = new NetworkCredential
-                    {
-                        UserName = "mojagracv@gmail.com",  // replace with valid value
-                        Password = "civilization96"  // replace with valid value
-                    };
-                    smtp.Credentials = credential;
-                    smtp.Host = "smtp.gmail.com";
-                    smtp.Port = 587;
-                    smtp.EnableSsl = true;
-                    await smtp.SendMailAsync(message);
-                }
-                return RedirectToAction("Index");
-            
+                    UserName = "mojagracv@gmail.com",  // replace with valid value
+                    Password = "civilization96"  // replace with valid value
+                };
+                smtp.Credentials = credential;
+                smtp.Host = "smtp.gmail.com";
+                smtp.Port = 587;
+                smtp.EnableSsl = true;
+                await smtp.SendMailAsync(message);
+            }
+            return RedirectToAction("Index");
+
         }
 
         public ActionResult Pytania_rodzicow() {
@@ -1311,6 +1311,28 @@ namespace Dziennik.Controllers
             return View(zapytanie);
 
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Odpowiedz_pytanie(Zapytanie zapytanie)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var userId = Convert.ToInt32(Session["UserID"]);
+
+                zapytanie.data_odpowiedz = DateTime.Now;
+
+                db.Entry(zapytanie).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(zapytanie);
+        }
+    
+
+       
 
 
 
