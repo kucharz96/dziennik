@@ -1292,6 +1292,7 @@ namespace Dziennik.Controllers
 
         }
 
+
         public ActionResult Odpowiedz_pytanie(int? id)
         {
             if (Session["Status"] != "Nauczyciel")

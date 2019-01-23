@@ -463,6 +463,8 @@
     <Content Include="Views\Nauczyciel\_Spoznienia.cshtml" />
     <Content Include="Views\Nauczyciel\Pytania_rodzicow.cshtml" />
     <Content Include="Views\Nauczyciel\Odpowiedz_pytanie.cshtml" />
+    <Content Include="Views\Rodzic\DodawanieZapytania.cshtml" />
+    <Content Include="Views\Rodzic\EdytowanieNieobecnosci.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
