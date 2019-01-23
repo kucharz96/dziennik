@@ -409,7 +409,7 @@ namespace Dziennik.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EdycjaProfilu([Bind(Include = "ID, imie, nazwisko, Email")]Rodzic userprofile)
+        public ActionResult EdycjaProfilu([Bind(Include = "ID, imie, nazwisko, Email, haslo")]Rodzic userprofile)
         {
             //XDDDDDDDDDDDDDDDDDDDDD
             // if (ModelState.IsValid)
@@ -423,6 +423,7 @@ namespace Dziennik.Controllers
                 user.imie = userprofile.imie;
                 user.nazwisko = userprofile.nazwisko;
                 user.Email = userprofile.Email;
+                user.haslo = userprofile.haslo;
                 
                 db.Entry(user).State = EntityState.Modified;
 
