@@ -434,6 +434,48 @@ namespace Dziennik.Controllers
             
            return View(userprofile);
         }
+        public ActionResult DodawanieZapytania()
+        {
+            if (Session["Status"] != "Rodzic")
+            {
+                return RedirectToAction("Index", "Home");
+
+            }
+            Nauczyciel n = new Nauczyciel();
+            ViewBag.NauczycielID = new SelectList(db.Nauczyciele, "NauczycielID", "NauczycielID");
+           // ViewBag.NauczycielID = new SelectList(new List<SelectListItem>
+            //    {
+             //       new SelectListItem { Text = "ID", Value = ((int)n.NauczycielID).ToString()},
+              //      new SelectListItem { Text = "Imie", Value = n.imie},
+             //   }, "Value", "Text");
+            return View();
+
+
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DodawanieZapytania([Bind(Include = "NauczycielID, pytanie")] Zapytanie zapytanie)
+        {
+            if (Session["Status"] != "Rodzic")
+            {
+                return RedirectToAction("Index", "Home");
+
+            }
+            var userId = Convert.ToInt32(Session["UserID"]);
+            zapytanie.data_pytania = DateTime.Now;
+            zapytanie.RodzicID = userId;
+            if (ModelState.IsValid)
+            {
+                db.Zapytania.Add(zapytanie);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(zapytanie);
+
+
+
+
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
