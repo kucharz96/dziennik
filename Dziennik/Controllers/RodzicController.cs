@@ -391,9 +391,9 @@ namespace Dziennik.Controllers
                 return RedirectToAction("Index", "Home");
             var id = Convert.ToInt32(Session["UserID"]);
             Rodzic rodzic = db.Rodzice.Find(id);
-           // ViewBag.Imie = rodzic.imie;
-            //ViewBag.Nazwisko = rodzic.nazwisko;
-           // ViewBag.Email = rodzic.Email;
+            ViewBag.Imie = rodzic.imie;
+            ViewBag.Nazwisko = rodzic.nazwisko;
+            ViewBag.Email = rodzic.Email;
 
             return View(rodzic);
             /*
@@ -409,25 +409,27 @@ namespace Dziennik.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EdycjaProfilu([Bind(Include = "imie, nazwisko, Email")]Rodzic userprofile)
+        public ActionResult EdycjaProfilu([Bind(Include = "ID, imie, nazwisko, Email")]Rodzic userprofile)
         {
-            if (ModelState.IsValid)
-            {
-                string username = User.Identity.Name;
+            //XDDDDDDDDDDDDDDDDDDDDD
+            // if (ModelState.IsValid)
+           // {
+               int ? id = userprofile.ID;
                 // Get the userprofile
-                Rodzic user = db.Rodzice.FirstOrDefault(u => u.login.Equals(username));
+                Rodzic user = db.Rodzice.FirstOrDefault(u => u.ID == id);
 
-                // Update fields
+            // Update fields
+                user.ID = userprofile.ID;
                 user.imie = userprofile.imie;
                 user.nazwisko = userprofile.nazwisko;
                 user.Email = userprofile.Email;
-
+                
                 db.Entry(user).State = EntityState.Modified;
 
                 db.SaveChanges();
 
-                return RedirectToAction("Index", "Home"); // or whatever
-            }
+               // return RedirectToAction("Index", "Home"); // or whatever
+          // }
             
            return View(userprofile);
         }
