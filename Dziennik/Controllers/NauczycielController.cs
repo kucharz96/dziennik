@@ -1291,7 +1291,43 @@ namespace Dziennik.Controllers
 
 
         }
+        public ActionResult EdycjaProfilu()
+        {
+            if (Session["Status"] != "Nauczyciel")
+                return RedirectToAction("Index", "Home");
+            var id = Convert.ToInt32(Session["UserID"]);
+            Nauczyciel nauczyciel = db.Nauczyciele.Find(id);
+            ViewBag.Imie = nauczyciel.imie;
+            ViewBag.Nazwisko = nauczyciel.nazwisko;
 
+            return View(nauczyciel);
+
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EdycjaProfilu([Bind(Include = "NauczycielID, imie, nazwisko")]Nauczyciel userprofile)
+        {
+            //XDDDDDDDDDDDDDDDDDDDDD
+            // if (ModelState.IsValid)
+            // {
+            int? id = userprofile.NauczycielID;
+
+            Nauczyciel user = db.Nauczyciele.FirstOrDefault(u => u.NauczycielID == id);
+
+            // Update fields
+            user.NauczycielID = userprofile.NauczycielID;
+            user.imie = userprofile.imie;
+            user.nazwisko = userprofile.nazwisko;
+
+            db.Entry(user).State = EntityState.Modified;
+
+            db.SaveChanges();
+
+            // return RedirectToAction("Index", "Home"); // or whatever
+            // }
+
+            return RedirectToAction("Index", "Home");
+        }
 
         public ActionResult Odpowiedz_pytanie(int? id)
         {
