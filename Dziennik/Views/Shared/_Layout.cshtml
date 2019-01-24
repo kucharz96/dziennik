@@ -4,7 +4,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title — moja aplikacja platformy ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -20,7 +19,7 @@
                     <span class="icon-bar"></span>
 
                 </button>
-                @Html.ActionLink("Nazwa aplikacji", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Dziennik", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -90,7 +89,7 @@
                     else
                     {
                         <li>@Html.ActionLink(@Session["Name"].ToString()
-						+" "+ @Session["Forname"].ToString(), "EdycjaProfilu", @Session["Status"].ToString() ) </li>
+						+" "+ @Session["Forname"].ToString(), "EdycjaProfilu",(@Session["Status"].ToString())) </li>
                         <li>@Html.ActionLink("Wyloguj", "Wyloguj", "Log")</li>
                     }
 
