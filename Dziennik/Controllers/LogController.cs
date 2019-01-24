@@ -57,7 +57,7 @@ namespace Dziennik.Controllers
                     Session["UserName"] = uczniowie.login.ToString();
                     Session["Name"] = uczniowie.imie.ToString();
                     Session["Forname"] = uczniowie.nazwisko.ToString();
-                    Session["Status"] = "Uczeń";
+                    Session["Status"] = "Uczen";
                     return RedirectToAction("Zalogowany");
                 }
                 var nauczyciele = db.Nauczyciele.Where(a => a.login.Equals(login) && a.haslo.Equals(password)).FirstOrDefault();
