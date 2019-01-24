@@ -368,7 +368,52 @@ namespace Dziennik.Controllers
             ViewBag.UczenID = new SelectList(db.Uczniowie, "ID", "FullName", nieobecnosc.UczenID);
             return View(nieobecnosc);
         }
+        public ActionResult EdycjaProfilu()
+        {
+            if (Session["Status"] != "Uczen")
+                return RedirectToAction("Index", "Home");
+            var id = Convert.ToInt32(Session["UserID"]);
+            Uczen rodzic = db.Uczniowie.Find(id);
+            ViewBag.Imie = rodzic.imie;
+            ViewBag.Nazwisko = rodzic.nazwisko;
 
+            return View();
+            /*
+             *   Spoznienie spoznienie = db.Spoznienia.Find(id);
+            if (spoznienie == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.LekcjaID = new SelectList(db.Lekcja, "ID", "PrzedmiotID", spoznienie.LekcjaID);
+            ViewBag.UczenID = new SelectList(db.Uczniowie, "ID", "FullName", spoznienie.UczenID);
+            return View(spoznienie);
+             * */
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EdycjaProfilu([Bind(Include = "ID, imie, nazwisko")]Uczen userprofile)
+        {
+            //XDDDDDDDDDDDDDDDDDDDDD
+            // if (ModelState.IsValid)
+            // {
+            int? id = userprofile.ID;
+            // Get the userprofile
+            Uczen user = db.Uczniowie.FirstOrDefault(u => u.ID == id);
+
+            // Update fields
+            user.ID = userprofile.ID;
+            user.imie = userprofile.imie;
+            user.nazwisko = userprofile.nazwisko;
+
+            db.Entry(user).State = EntityState.Modified;
+
+            db.SaveChanges();
+
+            // return RedirectToAction("Index", "Home"); // or whatever
+            // }
+
+            return View(userprofile);
+        }
         // GET: Ocena/Edit/5
         public ActionResult EdytowanieNieobecnosci(int? id)
         {
