@@ -453,7 +453,7 @@ namespace Dziennik.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DodawanieZapytania([Bind(Include = "NauczycielID, pytanie")] Zapytanie zapytanie)
+        public ActionResult DodawanieZapytania([Bind(Include = "NauczycielID, pytanie")] Zapytanie zapytanie, string data)
         {
             if (Session["Status"] != "Rodzic")
             {
@@ -462,6 +462,7 @@ namespace Dziennik.Controllers
             }
             var userId = Convert.ToInt32(Session["UserID"]);
             zapytanie.data_pytania = DateTime.Now;
+            zapytanie.NauczycielID = Convert.ToInt32(data);
             zapytanie.RodzicID = userId;
             if (ModelState.IsValid)
             {
