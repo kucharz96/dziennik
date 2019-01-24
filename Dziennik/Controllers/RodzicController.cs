@@ -442,7 +442,7 @@ namespace Dziennik.Controllers
 
             }
             Nauczyciel n = new Nauczyciel();
-            ViewBag.NauczycielID = new SelectList(db.Nauczyciele, "NauczycielID", "NauczycielID");
+            ViewBag.Nauczyciel = db.Nauczyciele.ToList();
            // ViewBag.NauczycielID = new SelectList(new List<SelectListItem>
             //    {
              //       new SelectListItem { Text = "ID", Value = ((int)n.NauczycielID).ToString()},
