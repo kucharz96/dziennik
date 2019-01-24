@@ -1,4 +1,6 @@
-﻿@model Dziennik.Models.Zapytanie
+﻿@using Dziennik.Models
+
+@model Dziennik.Models.Zapytanie
 
 @{
     ViewBag.Title = "DodawanieZapytania";
@@ -7,22 +9,28 @@
 
 <h2>Dodawanie zapytania</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Zapytanie</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.NauczycielID, "NauczycielID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.NauczycielID, "Nauczyciel", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                
-				foreach()
-				
-				@Html.ValidationMessageFor(model => model.NauczycielID, "", new { @class = "text-danger" })
-            </div>
+
+                <select class="form-control" name="data" style="text-align-last:center;">
+
+
+                    @foreach (Nauczyciel nauczyciel in ViewBag.Nauczyciel)
+                    {
+                        <option value="@nauczyciel.NauczycielID">@nauczyciel.FullName</option>
+                    }
+
+                    @Html.ValidationMessageFor(model => model.NauczycielID, "", new { @class = "text-danger" })
+</div>
         </div>
 
         <div class="form-group">
